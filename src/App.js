@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/reset.css';
+import { ToastContainer } from 'react-toastify';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
+import history from './history';
+import Main from './Page/Main';
+import NotFound from './Page/404';
+import Login from './Page/Login';
+import { PrivateRoute } from './Components/PrivateRoute';
+// import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route path='/404' exact component={NotFound} />
+
+          <PrivateRoute path="/" component={Main} />
+          <PrivateRoute path="/home" component={Main} />
+          <Route path='*' exact component={NotFound} />
+
+          <Redirect to="/home" />
+        </Switch>
+        <ToastContainer hideProgressBar />
+      </Router>
   );
 }
 
