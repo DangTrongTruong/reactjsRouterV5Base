@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import {
   MenuFoldOutlined,
   UploadOutlined,
@@ -8,10 +8,6 @@ import {
   MenuUnfoldOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu } from 'antd';
-import Dashboard from './Dashboard/Dashboard';
-import NotFound from './404';
-import Page1 from './Page1';
-import Page2 from './Page2';
 
 const { Header, Sider, Content } = Layout;
 
@@ -70,12 +66,7 @@ const Main = () => {
           padding: 24,
         }}
       >
-        <Switch>
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/page1" component={Page1} />
-          <Route exact path="/page2" component={Page2} />
-          <Route exact path="/404" component={NotFound} />
-        </Switch>
+         <Outlet />
       </Content>
     </Layout>
   </Layout>
