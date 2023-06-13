@@ -9,7 +9,6 @@ import Dashboard from "./Page/Dashboard/Dashboard";
 import Page1 from "./Page/Page1";
 import Page2 from "./Page/Page2";
 import PrivateRoute from "./Components/PrivateRoute";
-// import { Provider } from 'react-redux';
 
 function App() {
   return (

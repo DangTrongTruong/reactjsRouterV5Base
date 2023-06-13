@@ -8,12 +8,19 @@ import {
   MenuUnfoldOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu } from 'antd';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../Redux/Slice/authSlice';
 
 const { Header, Sider, Content } = Layout;
 
 const Main = () => {
-
+  const dispatch = useDispatch()
   const [collapsed, setCollapsed] = useState(false);
+
+
+  const handleLogout = () => {
+    dispatch(logoutUser())
+  }
 
   return (
     <Layout style={{ height: '100vh' }}>
@@ -38,6 +45,10 @@ const Main = () => {
             key: '3',
             icon: <UploadOutlined />,
             label: <Link to={'/page2'}>page2</Link>,
+          },
+          {
+            key: '4',
+            label: <Button type='primary' onClick={handleLogout}>Logout</Button>,
           },
         ]}
       />
